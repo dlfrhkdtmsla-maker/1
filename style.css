@@ -1,0 +1,178 @@
+:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --text: #20282a;
+  --muted: #5f6b6d;
+  --line: #dcdfdc;
+  --primary: #2f5d62;
+  --on-primary: #ffffff;
+  --danger: #b3382c;
+  --warn-bg: #fdf1d8;
+  --warn-text: #6b4a00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14191a;
+    --surface: #1f2627;
+    --text: #e9edec;
+    --muted: #a3afb0;
+    --line: #354042;
+    --primary: #7fbcc2;
+    --on-primary: #10211f;
+    --danger: #f0897d;
+    --warn-bg: #3d3115;
+    --warn-text: #f4dca0;
+  }
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.55 system-ui, -apple-system, "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+main {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px 16px calc(32px + env(safe-area-inset-bottom));
+}
+
+h1 { font-size: 1.4rem; margin: 8px 0 16px; }
+h2 { font-size: 1.05rem; margin: 24px 0 8px; }
+p { margin: 8px 0; }
+.muted { color: var(--muted); font-size: .9rem; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+  margin: 10px 0;
+}
+
+button.card {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  text-align: left;
+  color: var(--text);
+  font-weight: 400;
+}
+
+.card strong { display: block; }
+
+.warn {
+  background: var(--warn-bg);
+  color: var(--warn-text);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: .9rem;
+  margin: 10px 0;
+}
+
+button, .button {
+  display: inline-block;
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--primary);
+  color: var(--on-primary);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button:disabled { opacity: .45; cursor: not-allowed; }
+button.secondary, .button.secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+button.danger { background: var(--danger); color: var(--on-primary); }
+button.wide { width: 100%; margin-top: 10px; }
+button.text-button { background: none; color: var(--primary); padding: 8px 0; min-height: 40px; }
+
+.row { display: flex; gap: 10px; }
+.row > * { flex: 1; min-width: 0; }
+
+label { display: block; margin: 12px 0 4px; font-weight: 600; font-size: .92rem; }
+label.check { display: flex; gap: 10px; align-items: flex-start; font-weight: 400; }
+label.check input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; }
+
+input, select, textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+}
+
+textarea { min-height: 88px; resize: vertical; }
+
+.timer {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  margin: 28px 0 6px;
+}
+
+.status { text-align: center; font-weight: 600; }
+.status.recording { color: var(--danger); }
+
+.meter {
+  height: 12px;
+  margin: 18px 0;
+  overflow: hidden;
+  border-radius: 6px;
+  background: var(--line);
+}
+
+.meter > div {
+  width: 100%;
+  height: 100%;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+audio { width: 100%; margin: 8px 0; }
+
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0; }
+.chips button { flex: none; min-height: 40px; padding: 6px 12px; }
+
+ul.log { margin: 6px 0; padding-left: 18px; font-size: .9rem; color: var(--muted); }
+
+dialog {
+  width: min(420px, calc(100vw - 32px));
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+dialog::backdrop { background: rgba(0, 0, 0, .45); }
+
+#toast {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  max-width: 528px;
+  margin: 0 auto;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--text);
+  color: var(--bg);
+}

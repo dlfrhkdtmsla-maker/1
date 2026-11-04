@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>면담 기록</title>
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app"></main>
+  <dialog id="dialog">
+    <p id="dialog-message"></p>
+    <div class="row">
+      <button id="dialog-cancel" class="secondary" type="button">취소</button>
+      <button id="dialog-ok" type="button">확인</button>
+    </div>
+  </dialog>
+  <div id="toast" role="status" hidden></div>
+  <script src="vault.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
